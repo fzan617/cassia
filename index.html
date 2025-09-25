@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk kamu yang Luar Biasa! 💜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #8A2BE2, #DA70D6, #E6E6FA);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 2s ease-in;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            color: #8A2BE2;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(138, 43, 226, 0.2);
+        }
+        
+        .message {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4B0082;
+            margin-bottom: 25px;
+        }
+        
+        .heart {
+            color: #DA70D6;
+            font-size: 28px;
+            animation: heartbeat 1.5s infinite;
+            margin: 10px 0;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #8A2BE2, #DA70D6);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .name-input {
+            margin: 20px 0;
+        }
+        
+        input {
+            padding: 12px;
+            border: 2px solid #DA70D6;
+            border-radius: 25px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .personalized-name {
+            color: #8A2BE2;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(138, 43, 226, 0.3);
+        }
+        
+        .flower-garden {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .flower-icon {
+            font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .purple-theme {
+            background: linear-gradient(45deg, #8A2BE2, #DA70D6, #E6E6FA);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Halaman Input Nama -->
+        <div id="name-input-page">
+            <h1>💜 SELAMAT DATANG 💜</h1>
+            <div class="message">
+                <p>Masukkan nama kamu untuk memulai</p>
+            </div>
+            <div class="name-input">
+                <input type="text" id="friend-name" placeholder="Masukkan nama kamu..." maxlength="20">
+                <br>
+                <button onclick="startAppreciation()">Mulai Kejutan 💖</button>
+            </div>
+            <div class="flower-garden">
+                <div class="flower-icon">💮</div>
+                <div class="flower-icon">🌸</div>
+                <div class="flower-icon">🌺</div>
+                <div class="flower-icon">🌷</div>
+                <div class="flower-icon">🌹</div>
+            </div>
+        </div>
+        
+        <!-- Halaman Utama -->
+        <div id="main-content" class="hidden">
+            <h1>Untuk <span id="name-placeholder" class="personalized-name"></span> 💕</h1>
+            <div class="message">
+                <p>HAI PERI HEBATKU,</p>
+                <p>Setiap hari berkomunikasi bersamamu adalah berkah yang luar biasa.</p>
+                <p>Terima kasih sudah menjadi sosok yang menginspirasi dan selalu mendukung!</p>
+                <p class="heart">💜 💜 💜</p>
+            </div>
+            <button onclick="showSurprise()">Klik untuk melanjutkan! 🌸</button>
+        </div>
+        
+        <!-- Halaman Kejutan 1 -->
+        <div id="surprise" class="hidden">
+            <h1>UNTUK KAMU, <span id="name-surprise" class="personalized-name"></span>! 💖</h1>
+            <div class="message">
+                <p>Kamu adalah:</p>
+                <p>✨ Sumber inspirasi bagi orang di sekitarmu</p>
+                <p>✨ seseorang yang selalu bisa diandalkan</p>
+                <p>✨ Pribadi yang luar biasa dan penuh semangat</p>
+                <p class="heart">💝 💝 💝</p>
+                <p><em>"Teruslah bersinar dan jadilah versi terbaik dari dirimu!"</em></p>
+            </div>
+            <button onclick="showFlowers()">Lihat Bunga untukmu! 💐</button>
+        </div>
+        
+        <!-- Halaman Bunga -->
+        <div id="flowers" class="hidden">
+            <h1>Untuk <span id="name-flowers" class="personalized-name"></span> 💐</h1>
+            <div class="message">
+                <p>🌹 Mawar ungu untuk kekuatan dan ketulusanmu</p>
+                <p>🌸 Sakura untuk keindahan jiwa dan hatimu</p>
+                <p>🌺 Hibiscus untuk semangat dan energi positifmu</p>
+                <p>💮 Melati untuk kesucian niat dan ketulusanmu</p>
+                <p>🌷 Tulip untuk harapan dan masa depan cerahmu</p>
+                <p class="heart">💌 💌 💌</p>
+                <p><strong>Dengan penuh apresiasi,<br><span id="my-name" class="personalized-name"></span></strong></p>
+            </div>
+            <div class="flower-garden">
+                <div class="flower-icon" style="animation-delay: 0s">🌹</div>
+                <div class="flower-icon" style="animation-delay: 0.5s">🌸</div>
+                <div class="flower-icon" style="animation-delay: 1s">🌺</div>
+                <div class="flower-icon" style="animation-delay: 1.5s">🌷</div>
+                <div class="flower-icon" style="animation-delay: 2s">💮</div>
+            </div>
+            <button onclick="showFinal()">Pesan Terakhir 💜</button>
+        </div>
+        
+        <!-- Halaman Final -->
+        <div id="final" class="hidden">
+            <h1>Terima Kasih <span id="name-final" class="personalized-name"></span>! 💞</h1>
+            <div class="message">
+                <p>Terima kasih sudah menjadi bagian dari kehidupan...</p>
+                <p class="heart">💜 💖 💜 💖 💜</p>
+                <p>KAMU ADALAH WANITA YANG BERHARGA</p>
+                <p><em>"Teruslah menjadi luar biasa!"</em></p>
+            </div>
+            <button onclick="resetAll()">Mulai dari Awal 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        let friendName = '';
+        const myName = 'CASSIA RAMADANTY'; // Ganti dengan nama kamu
+        
+        function startAppreciation() {
+            friendName = document.getElementById('friend-name').value.trim();
+            if (friendName === '') {
+                alert('Masukkan nama dulu ya... 💜');
+                return;
+            }
+            
+            document.getElementById('name-input-page').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            document.getElementById('name-placeholder').textContent = friendName;
+            document.getElementById('my-name').textContent = myName;
+            
+            createFlowers();
+        }
+        
+        function showSurprise() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('surprise').classList.remove('hidden');
+            document.getElementById('name-surprise').textContent = friendName;
+        }
+        
+        function showFlowers() {
+            document.getElementById('surprise').classList.add('hidden');
+            document.getElementById('flowers').classList.remove('hidden');
+            document.getElementById('name-flowers').textContent = friendName;
+        }
+        
+        function showFinal() {
+            document.getElementById('flowers').classList.add('hidden');
+            document.getElementById('final').classList.remove('hidden');
+            document.getElementById('name-final').textContent = friendName;
+        }
+        
+        function resetAll() {
+            document.getElementById('final').classList.add('hidden');
+            document.getElementById('flowers').classList.add('hidden');
+            document.getElementById('surprise').classList.add('hidden');
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('name-input-page').classList.remove('hidden');
+        }
+        
+        // Fungsi untuk membuat bunga jatuh
+        function createFlowers() {
+            const flowers = ['🌸', '🌺', '🌷', '💮', '🌹', '🌼', '💐'];
+            
+            setInterval(() => {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.top = '-50px';
+                flower.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                flower.style.animation = `fall ${Math.random() * 4 + 3}s linear forwards`;
+                flower.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(flower);
+                
+                setTimeout(() => {
+                    if (flower.parentNode) {
+                        flower.parentNode.removeChild(flower);
+                    }
+                }, 7000);
+            }, 500);
+        }
+        
+        // Enter key support untuk input nama
+        document.getElementById('friend-name').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                startAppreciation();
+            }
+        });
+        
+        // Background effect dengan partikel ungu
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = '#DA70D6';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-10px';
+            particle.style.opacity = '0.6';
+            particle.style.animation = `fall ${Math.random() * 5 + 3}s linear forwards`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 8000);
+        }
+        
+        setInterval(createParticle, 200);
+    </script>
+</body>
+</html>
